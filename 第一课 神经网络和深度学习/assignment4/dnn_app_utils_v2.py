@@ -152,7 +152,8 @@ def initialize_parameters_deep(layer_dims):
     L = len(layer_dims)            # number of layers in the network
 
     for l in range(1, L):
-        parameters['W' + str(l)] = np.random.randn(layer_dims[l], layer_dims[l-1]) / np.sqrt(layer_dims[l-1]) #*0.01
+        # / np.sqrt(layer_dims[l-1])
+        parameters['W' + str(l)] = np.random.randn(layer_dims[l], layer_dims[l-1]) / np.sqrt(layer_dims[l-1])
         parameters['b' + str(l)] = np.zeros((layer_dims[l], 1))
         
         assert(parameters['W' + str(l)].shape == (layer_dims[l], layer_dims[l-1]))
@@ -241,7 +242,7 @@ def L_model_forward(X, parameters):
     # Implement LINEAR -> SIGMOID. Add "cache" to the "caches" list.
     AL, cache = linear_activation_forward(A, parameters['W' + str(L)], parameters['b' + str(L)], activation = "sigmoid")
     caches.append(cache)
-    
+
     assert(AL.shape == (1,X.shape[1]))
             
     return AL, caches
@@ -356,7 +357,7 @@ def L_model_backward(AL, Y, caches):
         grads["dA" + str(l + 1)] = dA_prev_temp
         grads["dW" + str(l + 1)] = dW_temp
         grads["db" + str(l + 1)] = db_temp
-
+    
     return grads
 
 def update_parameters(parameters, grads, learning_rate):
