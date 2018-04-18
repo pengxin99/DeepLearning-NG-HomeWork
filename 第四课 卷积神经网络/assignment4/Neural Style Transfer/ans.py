@@ -244,7 +244,7 @@ if __name__ == '__main__':
 
     # Start interactive session
     sess = tf.InteractiveSession()
-    content_image = scipy.misc.imread("input/y.jpg")
+    content_image = scipy.misc.imread("image/ss.jpg")
     
     content_image = reshape_and_normalize_image(content_image)
     
@@ -307,9 +307,3 @@ if __name__ == '__main__':
     print("END!")
     
     
-    """
-    As we saw in lecture, the earlier (shallower) layers of a ConvNet tend to detect lower-level features such as edges and simple textures,
-     and the later (deeper) layers tend to detect higher-level features such as more complex textures as well as object classes.
-
-
-    """
